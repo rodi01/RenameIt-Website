@@ -1,7 +1,10 @@
 {
-  "main.css": "static/css/main.c17080f1.css",
-  "main.css.map": "static/css/main.c17080f1.css.map",
-  "main.js": "static/js/main.3b4ba8bc.js",
-  "main.js.map": "static/js/main.3b4ba8bc.js.map",
-  "static/media/logo.svg": "static/media/logo.5d5d9eef.svg"
+  "main.js": "static/js/main.83985af0.js",
+  "main.js.map": "static/js/main.83985af0.js.map",
+  "static/media/fb_ic.svg": "static/media/fb_ic.d06cf33e.svg",
+  "static/media/github_ic.svg": "static/media/github_ic.3953b15b.svg",
+  "static/media/heart_ic.svg": "static/media/heart_ic.51ad495c.svg",
+  "static/media/renameit_xd_logo.png": "static/media/renameit_xd_logo.431af845.png",
+  "static/media/tw_ic.svg": "static/media/tw_ic.3fd5914b.svg",
+  "static/media/xd_bg.png": "static/media/xd_bg.452e69e9.png"
 }
