@@ -1,0 +1,53 @@
+import React, { Component } from "react"
+import { SectionWrapper, Info, Example, P, H2 } from "./StyledComponents"
+import KeywordsList from "./KewordsList"
+
+class RenameSequence extends Component {
+  render() {
+    const keywords = [
+      { keyword: "%n", description: "Ascending numbered sequence" },
+      { keyword: "%N", description: "Descending numbered sequence" },
+      { keyword: "%A", description: "Alphabet sequence" }
+    ]
+    const proTip = [
+      { keyword: "%nn", description: "This will output 01, 02, 03 and so on" },
+      { keyword: "%a", description: "Lowercase alphabet sequence" }
+    ]
+    return (
+      <SectionWrapper>
+        <div>
+          <Info>
+            <H2>Rename in Sequence</H2>
+            <P>
+              Sequentially rename layers in either ascending or descending
+              order.
+            </P>
+            <KeywordsList
+              title="Keywords"
+              keywords={keywords}
+              marginTop="56px"
+              keywordWidth="32px"
+            />
+            <KeywordsList
+              title="Pro Tip"
+              keywords={proTip}
+              marginTop="32px"
+              keywordWidth="32px"
+            />
+          </Info>
+          <Example>
+            <video
+              type="video/mp4"
+              src={this.props.videoUrl}
+              loop
+              autoPlay
+              playsInline
+            />
+          </Example>
+        </div>
+      </SectionWrapper>
+    )
+  }
+}
+
+export default RenameSequence
