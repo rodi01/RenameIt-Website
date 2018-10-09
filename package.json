@@ -2,7 +2,7 @@
   "name": "rename-it-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://rodi01.github.io/RenameIt-Website",
+  "homepage": "http://renameit.design",
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",

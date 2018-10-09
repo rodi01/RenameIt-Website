@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 import {
   SectionWrapper,
-  Example,
   H2,
   P,
-  Info,
-  Keyword
+  InfoRight,
+  Keyword,
+  ExampleLeft
 } from "./StyledComponents"
 import KeywordsList from "./KewordsList"
 
@@ -19,9 +19,9 @@ class CurrentLayerName extends Component {
       { keyword: "%*c%", description: "Convert to camelCase" }
     ]
     return (
-      <SectionWrapper>
+      <SectionWrapper alignLeft={true}>
         <div>
-          <Example alignLeft={true}>
+          <ExampleLeft>
             <video
               type="video/mp4"
               src={this.props.videoUrl}
@@ -29,8 +29,8 @@ class CurrentLayerName extends Component {
               autoPlay
               playsInline
             />
-          </Example>
-          <Info alignRight={true}>
+          </ExampleLeft>
+          <InfoRight alignRight={true}>
             <H2>Current Layer Name</H2>
             <P>
               The keyword <Keyword>%*</Keyword> will copy the current selected
@@ -42,7 +42,7 @@ class CurrentLayerName extends Component {
               marginTop="56px"
               keywordWidth="46px"
             />
-          </Info>
+          </InfoRight>
         </div>
       </SectionWrapper>
     )

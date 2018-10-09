@@ -1,10 +1,5 @@
 import React, { Component } from "react"
-import styled from "styled-components"
-import { List, H3, Keyword } from "./StyledComponents"
-
-const Div = styled.div`
-  margin-top: ${props => props.marginTop || 0};
-`
+import { List, H3, Keyword, ListWrapper } from "./StyledComponents"
 
 class KewordsList extends Component {
   render() {
@@ -16,10 +11,10 @@ class KewordsList extends Component {
       </li>
     ))
     return (
-      <Div marginTop={this.props.marginTop}>
+      <ListWrapper marginTop={this.props.marginTop}>
         <H3>{this.props.title}</H3>
         <List>{rows}</List>
-      </Div>
+      </ListWrapper>
     )
   }
 }

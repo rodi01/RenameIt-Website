@@ -2,13 +2,45 @@ import styled, { css } from "styled-components"
 
 const primaryColor = props => props.theme.primaryColor
 
+const sizes = {
+  giant: { min: 1281 },
+  desktop: { min: 1025, max: 1280 },
+  tablet: { min: 768, max: 1024 },
+  tabletL: { min: 768, max: 1024, orientation: "landscape" },
+  phone: { min: 320, max: 480 },
+  medium: { min: 320, max: 768 }
+}
+
+const renderMedia = (min, max, orientation, ...args) => {
+  const m = max !== undefined ? `and (max-width: ${max}px)` : ""
+  const o = orientation !== undefined ? `and (orientation: ${orientation})` : ""
+
+  return `@media (min-width: ${min}px) ${m} ${o} {
+        ${css(...args)};
+      }
+    }`
+}
+
+// iterate through the sizes and create a media template
+export const media = Object.keys(sizes).reduce((accumulator, label) => {
+  const min = sizes[label].min
+  const max = sizes[label].max
+  const orientation = sizes[label].orientation
+
+  accumulator[label] = (...args) => css`
+    ${renderMedia(min, max, orientation, ...args)};
+  `
+  return accumulator
+}, {})
+
 // Typography
 // ————————————————————————————————————————————————————————————
 export const H1 = styled.h1`
   font-size: 80px;
   font-weight: 100;
   margin: 0 0 16px;
-  line-height: 1;
+  line-height: 1.2em;
+  ${media.phone`font-size: 56px;`};
 `
 
 export const H2 = styled.h2`
@@ -18,8 +50,11 @@ export const H2 = styled.h2`
   line-height: 1.2em;
   margin: 0;
 
+  ${media.phone`font-size: 56px; text-align: center;`};
+
   & + p {
     margin-top: 16px;
+    ${media.phone`text-align: center;`};
   }
 `
 
@@ -28,6 +63,8 @@ export const H3 = styled(H2)`
   font-size: 36px;
   letter-spacing: -0.2px;
   line-height: 1.2em;
+  ${media.phone`font-size: 32px;`};
+  ${media.tabletL`font-size: 32px;`};
 `
 
 export const P = styled.p`
@@ -53,6 +90,7 @@ export const H4 = styled(H2)`
   font-size: 36px;
   letter-spacing: -0.75px;
   color: #fff;
+  ${media.phone`font-size: 32px;`};
 `
 
 // Layout
@@ -69,25 +107,30 @@ const grid = css`
 export const MainWrapper = styled.div``
 
 export const HeaderWrapper = styled.header`
-  height: 88vh;
+  height: 100vh;
+
   text-align: center;
   background-image: url(${props => props.bg});
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
 
+  ${media.phone`
+    height:65vh; padding: 0 16px;
+  `};
+  ${media.tablet`height:70vh; padding: 0 32px;`};
+  ${media.tabletL`height:100vh;`};
+
   & > div {
-    display: grid;
-    grid-template-rows: 1fr auto;
-    grid-row-gap: 64px;
-    padding-top: 64px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 25vh;
+    ${media.medium`padding-top:5vh;`};
   }
 
-  .video {
-    height: auto;
-    video {
-      margin-top: 0;
-    }
+  & > div {
+    ${media.tablet`padding-top:15vh !important;`};
   }
 `
 
@@ -100,75 +143,138 @@ export const List = styled.ul`
     line-height: 32px;
     margin-top: 16px;
 
+    ${media.phone`font-size: 16px;`};
+    ${media.tabletL`font-size: 16px;`};
+
     &:first-child {
       margin-top: 0;
     }
   }
 `
 
+export const HeroImage = styled.div`
+  flex-grow: 1;
+  margin-top: 32px;
+  img {
+    width: 80%;
+    ${media.phone`width:100%;`};
+  }
+`
+
 export const SectionWrapper = styled.section`
   margin-top: calc(182px - 80px);
-  padding: 80px 0 0;
+  padding: 80px 56px 0;
   min-height: 620px;
+
+  ${media.medium`padding: 56px 0 0; margin-top: 24px; min-height: auto;`}
+  ${media.tabletL`padding: 56px 32px 0`};
+
   ${pros =>
     pros.noGrid &&
     `
     text-align: center;
   `};
 
-  header + &  {
-    margin-top: 0
+  header + & {
+    margin-top: 0;
   }
 
   & > div {
     ${maxWidth}
-    display: ${props => props.noGrid ? "block" : "grid" /* prettier-ignore */};
-    ${grid}
+    display: ${props => props.noGrid ? "block" : "flex" /* prettier-ignore */};
+    justify-content: ${
+      props => props.alignLeft ? "flex-end" : "flex-start" /* prettier-ignore */
+    };
+    ${media.medium`flex-direction: column;`};
   }
-`
 
+  .infoWrapper { 
+    padding: 0 24px;
+    ${media.tablet`text-align: left; padding: 0 40px;`}
+   }
+`
 export const Info = styled.div`
-  grid-column: ${props => props.alignRight ? "8 / span 5" : "1 / span 5" /* prettier-ignore */};
+  max-width: 520px;
+  min-width: 410px;
+  flex: 0 0 auto;
+  ${media.medium`
+    max-width: 100%;
+    min-width: auto;
+    padding: 0 24px;
+  `};
+
+  ${media.tablet`
+    padding: 0 40px;
+  `};
+
+  ${media.tabletL`
+    padding: 0;
+    max-width: 430px;
+  `};
+`
+export const InfoRight = styled(Info)`
+  ${media.medium` order: 1; `};
 `
 
 export const Example = styled.div`
-  grid-column: ${props => props.alignLeft ? "1 / span 7" : "6 / span 7" /* prettier-ignore */};
-  width: 100%;
   position: relative;
+  margin: 0 24px;
+  flex: 1 0 auto;
+  ${media.medium` margin: 24px 0 0; `};
 
   video {
     position: absolute;
     z-index: -1;
     height: 620px;
-    right: ${props => props.alignLeft ? 0 : "auto" /* prettier-ignore */};
+    ${media.medium`position: relative; width: 100%; height: auto;`};
+  }
+`
+export const ExampleLeft = styled(Example)`
+  ${media.medium` order: 2; `};
+  video {
+    right: 0;
   }
 `
 
 export const CenterVideo = styled.div`
   height: 630px;
   overflow: hidden;
+  position: relative;
+  ${media.medium`
+    height: auto; margin-bottom: -4px;
+    `};
+
   video {
     margin: 80px auto 0;
     width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    ${media.medium` margin-top: 56px; position: static;`};
   }
 `
 
 export const Footer = styled.footer`
   background: ${primaryColor};
   padding: 80px 0;
+  ${media.medium`padding-top: 1px;`};
 
   & > div {
     ${maxWidth};
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 24px;
+    ${media.medium`display: block`};
   }
 `
 export const FooterItem = styled.div`
   text-align: center;
 
+  ${media.medium`margin-top: 56px;`};
+
   ${P} {
     color: #fff;
+    ${media.medium`font-size: 16px; margin-top: 8px;`};
   }
 `
 
@@ -177,6 +283,9 @@ export const FooterCredits = styled.div`
   grid-column-start: span 3;
   font-size: 12px;
   color: #fff;
+  padding: 0 16px;
+
+  ${media.medium`margin-top: 80px;`};
 
   p {
     margin: 8px 0 0;
@@ -196,7 +305,7 @@ export const LinkButton = styled.a.attrs({
   target: "_blank"
 })`
   display: inline-block;
-  margin-top: 32px;
+  margin: 32px 12px 0;
   height: 64px;
   width: 192px;
   line-height: 64px;
@@ -225,8 +334,9 @@ export const LinkButton = styled.a.attrs({
   }
 
   &.twitter {
-    margin-left: 24px;
     background-image: linear-gradient(0deg, #1c98e6 0%, #1da1f2 100%);
+
+    ${media.phone`margin: 32px auto 0; display: block;`};
   }
 
   &.github {
@@ -237,11 +347,13 @@ export const LinkButton = styled.a.attrs({
   &:hover {
     box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.3);
   }
+  ${media.phone`margin-top:16px;`};
 `
 
 export const SecondaryWrapper = styled(SectionWrapper)`
   margin-top: 0;
   background: ${props => props.theme.secondaryColor};
+  ${media.medium`display: none;`};
 `
 
 export const ShortcutXDWrapper = styled.div`
@@ -276,4 +388,9 @@ export const ShortcutXDWrapper = styled.div`
       margin-right: 8px;
     }
   }
+`
+
+export const ListWrapper = styled.div`
+  margin-top: ${props => props.marginTop || 0};
+  ${media.phone`margin-top: 32px;`};
 `

@@ -5,17 +5,21 @@ class FindReplace extends Component {
   render() {
     return (
       <SectionWrapper noGrid={true}>
-        <H2>Find and Replace</H2>
-        <P>Replace any word(s) or character(s) from selected layers.</P>
-        <CenterVideo>
-          <video
-            type="video/mp4"
-            src={this.props.videoUrl}
-            loop
-            autoPlay
-            playsInline
-          />
-        </CenterVideo>
+        <div>
+          <div className="infoWrapper">
+            <H2>Find and Replace</H2>
+            <P>Replace any word(s) or character(s) from selected layers.</P>
+          </div>
+          <CenterVideo>
+            <video
+              type="video/mp4"
+              src={this.props.videoUrl}
+              loop
+              autoPlay
+              playsInline
+            />
+          </CenterVideo>
+        </div>
       </SectionWrapper>
     )
   }
