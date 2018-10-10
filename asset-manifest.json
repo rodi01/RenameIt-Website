@@ -1,6 +1,11 @@
 {
-  "main.js": "static/js/main.8c38e9f9.js",
-  "main.js.map": "static/js/main.8c38e9f9.js.map",
+  "main.js": "static/js/main.d81969b5.js",
+  "main.js.map": "static/js/main.d81969b5.js.map",
+  "static/media/Current.mp4": "static/media/Current.8338c1aa.mp4",
+  "static/media/Rename_Sequece.mp4": "static/media/Rename_Sequece.b1e14409.mp4",
+  "static/media/Replace.mp4": "static/media/Replace.7410b9c3.mp4",
+  "static/media/Store.mp4": "static/media/Store.63eac710.mp4",
+  "static/media/Width.mp4": "static/media/Width.5e051627.mp4",
   "static/media/fb_ic.svg": "static/media/fb_ic.d06cf33e.svg",
   "static/media/github_ic.svg": "static/media/github_ic.3953b15b.svg",
   "static/media/heart_ic.svg": "static/media/heart_ic.51ad495c.svg",
