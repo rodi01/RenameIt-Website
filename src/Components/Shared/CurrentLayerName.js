@@ -21,7 +21,7 @@ class CurrentLayerName extends Component {
     return (
       <SectionWrapper alignLeft={true}>
         <div>
-          <ExampleLeft>
+          <ExampleLeft className="currentVideo">
             <video
               type="video/mp4"
               src={this.props.videoUrl}
@@ -30,7 +30,7 @@ class CurrentLayerName extends Component {
               playsInline
             />
           </ExampleLeft>
-          <InfoRight alignRight={true}>
+          <InfoRight>
             <H2>Current Layer Name</H2>
             <P>
               The keyword <Keyword>%*</Keyword> will copy the current selected

@@ -21,7 +21,7 @@ class WidthHeight extends Component {
               keywordWidth="32px"
             />
           </Info>
-          <Example>
+          <Example className="widthHeightVideo">
             <video
               type="video/mp4"
               src={this.props.videoUrl}

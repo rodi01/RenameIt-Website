@@ -12,10 +12,10 @@ import Header from "./Header"
 import bg from "../images/xd_bg.png"
 
 const theme = {
-  bgColor: "#F9F1FB",
+  bgColor: "#f9f3fd",
   primaryColor: "#8f7295",
   shadowColor: "rgba(86, 34, 113, 0.32)",
-  secondaryColor: "#EED5F3"
+  secondaryColor: "#f5d8f9"
 }
 
 class XD extends Component {
@@ -27,15 +27,14 @@ class XD extends Component {
           <Header
             bg={bg}
             description="Keep your Adobe XD files organized, batch rename layers and artboards."
-            videoUrl="https://s3.amazonaws.com/www.invisionapp.com-studio/static/video/start-to-finish-screen-design.mp4"
           />
-          <RenameSequence videoUrl="https://s3.amazonaws.com/www.invisionapp.com-studio/static/video/responsive-scaling.mp4" />
-          <CurrentLayerName videoUrl="https://s3.amazonaws.com/www.invisionapp.com-studio/static/video/rapid-prototyping.mp4" />
-          <WidthHeight videoUrl="https://s3.amazonaws.com/www.invisionapp.com-studio/static/video/start-to-finish-screen-design.mp4" />
-          <FindReplace videoUrl="https://s3.amazonaws.com/www.invisionapp.com-studio/static/video/start-to-finish-screen-design.mp4" />
+          <RenameSequence videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Rename_Sequece.mp4" />
+          <CurrentLayerName videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Current.mp4" />
+          <WidthHeight videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Width.mp4" />
+          <FindReplace videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Replace.mp4" />
           <KeyboardShorcuts
             type="xd"
-            videoUrl="https://s3.amazonaws.com/www.invisionapp.com-studio/static/video/responsive-scaling.mp4"
+            videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Store.mp4"
           />
           <Footer type="xd" />
         </MainWrapper>

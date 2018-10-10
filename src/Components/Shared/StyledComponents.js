@@ -125,7 +125,7 @@ export const HeaderWrapper = styled.header`
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-top: 25vh;
+    padding-top: 20vh;
     ${media.medium`padding-top:5vh;`};
   }
 
@@ -228,29 +228,37 @@ export const Example = styled.div`
     height: 620px;
     ${media.medium`position: relative; width: 100%; height: auto;`};
   }
+
+  &.widthHeightVideo {
+    margin-top: -5%;
+  }
+
+  &.currentVideo {
+    margin-top: -3%;
+  }
 `
 export const ExampleLeft = styled(Example)`
-  ${media.medium` order: 2; `};
   video {
     right: 0;
   }
+  ${media.medium` order: 2; `};
 `
 
 export const CenterVideo = styled.div`
   height: 630px;
   overflow: hidden;
   position: relative;
+  margin: 32px auto 0;
+
   ${media.medium`
-    height: auto; margin-bottom: -4px;
-    `};
+    height: auto; margin-bottom: -4px; margin-top: 56px;
+  `};
+  ${media.tablet`height: auto;`};
 
   video {
-    margin: 80px auto 0;
     width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    ${media.medium` margin-top: 56px; position: static;`};
+
+    ${media.medium` position: static; `};
   }
 `
 

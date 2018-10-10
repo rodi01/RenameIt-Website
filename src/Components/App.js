@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <Content>
         <Switch>
-          <Route exact path="/" component={Soon} />
+          <Route exact path="/" component={XD} />
           <Route path="/sketch" component={Sketch} />
           <Route path="/xd" component={XD} />
         </Switch>
