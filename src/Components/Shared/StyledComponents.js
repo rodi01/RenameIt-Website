@@ -1,3 +1,4 @@
+import isBlank from "is-blank"
 import styled, { css } from "styled-components"
 
 const primaryColor = props => props.theme.primaryColor
@@ -5,17 +6,25 @@ const primaryColor = props => props.theme.primaryColor
 const sizes = {
   giant: { min: 1281 },
   desktop: { min: 1025, max: 1280 },
-  tablet: { min: 768, max: 1024 },
+  tablet: { max: 1024 },
   tabletL: { min: 768, max: 1024, orientation: "landscape" },
   phone: { min: 320, max: 480 },
   medium: { min: 320, max: 768 }
 }
 
 const renderMedia = (min, max, orientation, ...args) => {
-  const m = max !== undefined ? `and (max-width: ${max}px)` : ""
-  const o = orientation !== undefined ? `and (orientation: ${orientation})` : ""
+  const mi = isBlank(min) ? "" : `(min-width: ${min}px)`
+  const ma = isBlank(max) ? "" : `(max-width: ${max}px)`
+  const o = isBlank(orientation) ? "" : `and (orientation: ${orientation})`
+  let media = `${mi}`
 
-  return `@media (min-width: ${min}px) ${m} ${o} {
+  if (isBlank(media)) {
+    media += `${ma}`
+  } else {
+    media += `and ${ma}`
+  }
+
+  return `@media ${media} ${o} {
         ${css(...args)};
       }
     }`
@@ -50,11 +59,11 @@ export const H2 = styled.h2`
   line-height: 1.2em;
   margin: 0;
 
-  ${media.phone`font-size: 56px; text-align: center;`};
+  ${media.tablet`font-size: 56px; text-align: center;`};
 
   & + p {
     margin-top: 16px;
-    ${media.phone`text-align: center;`};
+    ${media.tablet`text-align: center;`};
   }
 `
 
@@ -166,7 +175,7 @@ export const SectionWrapper = styled.section`
   padding: 80px 56px 0;
   min-height: 620px;
 
-  ${media.medium`padding: 56px 0 0; margin-top: 24px; min-height: auto;`}
+  ${media.tablet`padding: 56px 0 0; margin-top: 24px; min-height: auto;`}
   ${media.tabletL`padding: 56px 32px 0`};
 
   ${pros =>
@@ -185,7 +194,7 @@ export const SectionWrapper = styled.section`
     justify-content: ${
       props => props.alignLeft ? "flex-end" : "flex-start" /* prettier-ignore */
     };
-    ${media.medium`flex-direction: column;`};
+    ${media.tablet`flex-direction: column;`};
   }
 
   .infoWrapper { 
@@ -197,14 +206,15 @@ export const Info = styled.div`
   max-width: 520px;
   min-width: 410px;
   flex: 0 0 auto;
-  ${media.medium`
+  ${media.tablet`
     max-width: 100%;
     min-width: auto;
     padding: 0 24px;
+
   `};
 
-  ${media.tablet`
-    padding: 0 40px;
+  ${media.medium`
+    padding: 0 24px;
   `};
 
   ${media.tabletL`
@@ -213,20 +223,20 @@ export const Info = styled.div`
   `};
 `
 export const InfoRight = styled(Info)`
-  ${media.medium` order: 1; `};
+  ${media.tablet` order: 1; `};
 `
 
 export const Example = styled.div`
   position: relative;
   margin: 0 24px;
   flex: 1 0 auto;
-  ${media.medium` margin: 24px 0 0; `};
+  ${media.tablet` margin: 24px 0 0; `};
 
   video {
     position: absolute;
     z-index: -1;
     height: 620px;
-    ${media.medium`position: relative; width: 100%; height: auto;`};
+    ${media.tablet`position: relative; width: 100%; height: auto;`};
   }
 
   &.widthHeightVideo {
@@ -241,7 +251,7 @@ export const ExampleLeft = styled(Example)`
   video {
     right: 0;
   }
-  ${media.medium` order: 2; `};
+  ${media.tablet` order: 2; `};
 `
 
 export const CenterVideo = styled.div`

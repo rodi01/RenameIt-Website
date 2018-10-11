@@ -26,7 +26,7 @@ class XD extends Component {
           <GlobalStyle />
           <Header
             bg={bg}
-            description="Keep your Adobe XD files organized, batch rename layers and artboards."
+            description="Keep your Adobe XD CC files organized, batch rename layers and artboards."
           />
           <RenameSequence videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Rename_Sequece.mp4" />
           <CurrentLayerName videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Current.mp4" />
