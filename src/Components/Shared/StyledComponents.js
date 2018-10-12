@@ -123,20 +123,26 @@ export const MainWrapper = styled.div``
 
 export const HeaderWrapper = styled.header`
   height: 100vh;
-
   text-align: center;
   background-image: url(${props => props.bg});
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+  padding: 0 32px;
 
+  ${media.tablet`height:80vh;`};
+  ${media.phone`height: 75vh; padding: 0 16px;`};
   ${media.tabletL`height:100vh;`};
-  ${media.tablet`height:75vh; padding: 0 32px;`};
-  ${media.phone`padding: 0 16px;`};
+
+  #logo {
+    height: 118px;
+    ${media.phone`height: 100px;`};
+  }
 
   & > div {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     height: 100%;
     padding-top: 20vh;
     ${media.medium`padding-top:5vh;`};
@@ -144,6 +150,18 @@ export const HeaderWrapper = styled.header`
 
   & > div {
     ${media.tablet`padding-top:8vh !important;`};
+  }
+`
+
+export const HeroImage = styled.div`
+  margin-top: 56px;
+  max-height: 65%;
+
+  ${media.tabletL`max-height: 60%;`};
+  ${media.phone`margin-top: 32px;`};
+  img {
+    width: 100%;
+    ${media.phone`width:100%;`};
   }
 `
 
@@ -162,15 +180,6 @@ export const List = styled.ul`
     &:first-child {
       margin-top: 0;
     }
-  }
-`
-
-export const HeroImage = styled.div`
-  flex-grow: 1;
-  margin-top: 32px;
-  img {
-    width: 80%;
-    ${media.phone`width:100%;`};
   }
 `
 

@@ -13,7 +13,7 @@ class Header extends Component {
         <HeaderWrapper bg={this.props.bg}>
           <div>
             <div>
-              <img alt="logo" src={logo} height="118" />
+              <img alt="logo" src={logo} id="logo" />
               <H1>Rename it</H1>
               <P>{this.props.description}</P>
             </div>
