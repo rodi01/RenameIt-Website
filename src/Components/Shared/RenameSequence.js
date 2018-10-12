@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import ScrollAnimation from "react-animate-on-scroll"
+import "animate.css/animate.min.css"
 import {
   SectionWrapper,
   Info,
@@ -21,40 +23,42 @@ class RenameSequence extends Component {
       { keyword: "%a", description: "Lowercase alphabet sequence" }
     ]
     return (
-      <SectionWrapper>
-        <div>
-          <Info>
-            <H2>Rename in Sequence</H2>
-            <P>
-              Sequentially rename layers in either ascending or descending
-              order.
-            </P>
-            <ComboList>
-              <KeywordsList
-                title="Keywords"
-                keywords={keywords}
-                keywordWidth="32px"
+      <ScrollAnimation animateIn="fadeInUp" offset={0} animateOnce={true}>
+        <SectionWrapper>
+          <div>
+            <Info>
+              <H2>Rename in Sequence</H2>
+              <P>
+                Sequentially rename layers in either ascending or descending
+                order.
+              </P>
+              <ComboList>
+                <KeywordsList
+                  title="Keywords"
+                  keywords={keywords}
+                  keywordWidth="32px"
+                />
+                <KeywordsList
+                  title="Pro Tip"
+                  keywords={proTip}
+                  keywordWidth="32px"
+                  alignSelf="flex-start"
+                />
+              </ComboList>
+            </Info>
+            <Example>
+              <video
+                type="video/mp4"
+                src={this.props.videoUrl}
+                poster={this.props.poster}
+                loop
+                autoPlay
+                playsInline
               />
-              <KeywordsList
-                title="Pro Tip"
-                keywords={proTip}
-                keywordWidth="32px"
-                alignSelf="flex-start"
-              />
-            </ComboList>
-          </Info>
-          <Example>
-            <video
-              type="video/mp4"
-              src={this.props.videoUrl}
-              poster={this.props.poster}
-              loop
-              autoPlay
-              playsInline
-            />
-          </Example>
-        </div>
-      </SectionWrapper>
+            </Example>
+          </div>
+        </SectionWrapper>
+      </ScrollAnimation>
     )
   }
 }

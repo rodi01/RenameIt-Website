@@ -1,4 +1,7 @@
 import React, { Component } from "react"
+import ScrollAnimation from "react-animate-on-scroll"
+import "animate.css/animate.min.css"
+
 import { SecondaryWrapper, H2, P, CenterVideo } from "./StyledComponents"
 import ShortcutsXD from "./ShortcutsXD"
 

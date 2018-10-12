@@ -1,4 +1,7 @@
 import React, { Component } from "react"
+import ScrollAnimation from "react-animate-on-scroll"
+import "animate.css/animate.min.css"
+
 import {
   SectionWrapper,
   H2,
@@ -19,34 +22,36 @@ class CurrentLayerName extends Component {
       { keyword: "%*c%", description: "Convert to camelCase" }
     ]
     return (
-      <SectionWrapper id="currentLayerName">
-        <div>
-          <Info>
-            <H2>Current Layer Name</H2>
-            <P>
-              The keyword <Keyword>%*</Keyword> will copy the current selected
-              layer(s) name.
-            </P>
-            <KeywordsList
-              title="Pro Tip"
-              keywords={proTip}
-              marginTop="56px"
-              keywordWidth="46px"
-            />
-          </Info>
+      <ScrollAnimation animateIn="fadeInUp" offset={0} animateOnce={true}>
+        <SectionWrapper id="currentLayerName">
+          <div>
+            <Info>
+              <H2>Current Layer Name</H2>
+              <P>
+                The keyword <Keyword>%*</Keyword> will copy the current selected
+                layer(s) name.
+              </P>
+              <KeywordsList
+                title="Pro Tip"
+                keywords={proTip}
+                marginTop="56px"
+                keywordWidth="46px"
+              />
+            </Info>
 
-          <Example className="currentVideo">
-            <video
-              type="video/mp4"
-              src={this.props.videoUrl}
-              poster={this.props.poster}
-              loop
-              autoPlay
-              playsInline
-            />
-          </Example>
-        </div>
-      </SectionWrapper>
+            <Example className="currentVideo">
+              <video
+                type="video/mp4"
+                src={this.props.videoUrl}
+                poster={this.props.poster}
+                loop
+                autoPlay
+                playsInline
+              />
+            </Example>
+          </div>
+        </SectionWrapper>
+      </ScrollAnimation>
     )
   }
 }
