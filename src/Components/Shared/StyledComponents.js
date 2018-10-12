@@ -52,6 +52,12 @@ export const H1 = styled.h1`
   ${media.phone`font-size: 56px;`};
 `
 
+export const h2CSS = css`
+  & + p {
+    margin-top: 16px;
+  }
+`
+
 export const H2 = styled.h2`
   font-size: 64px;
   font-weight: 200;
@@ -59,19 +65,19 @@ export const H2 = styled.h2`
   line-height: 1.2em;
   margin: 0;
 
-  ${media.tablet`font-size: 56px; text-align: center;`};
+  ${media.tablet`font-size: 56px;`};
+  ${media.tablet`font-size: 48px;`};
 
-  & + p {
-    margin-top: 16px;
-    ${media.tablet`text-align: center;`};
-  }
+  ${h2CSS};
 `
 
-export const H3 = styled(H2)`
+export const H3 = styled.h3`
+  margin: 0;
   font-weight: 400;
   font-size: 36px;
   letter-spacing: -0.2px;
   line-height: 1.2em;
+  ${h2CSS};
   ${media.phone`font-size: 32px;`};
   ${media.tabletL`font-size: 32px;`};
 `
@@ -124,11 +130,9 @@ export const HeaderWrapper = styled.header`
   background-size: cover;
   overflow: hidden;
 
-  ${media.phone`
-    height:65vh; padding: 0 16px;
-  `};
-  ${media.tablet`height:70vh; padding: 0 32px;`};
   ${media.tabletL`height:100vh;`};
+  ${media.tablet`height:75vh; padding: 0 32px;`};
+  ${media.phone`padding: 0 16px;`};
 
   & > div {
     display: flex;
@@ -139,21 +143,21 @@ export const HeaderWrapper = styled.header`
   }
 
   & > div {
-    ${media.tablet`padding-top:15vh !important;`};
+    ${media.tablet`padding-top:8vh !important;`};
   }
 `
 
 export const List = styled.ul`
   padding: 0;
   font-size: 24px;
-  margin: 24px 0;
+  margin: 24px 0 0;
+
   li {
     list-style: none;
     line-height: 32px;
     margin-top: 16px;
 
-    ${media.phone`font-size: 16px;`};
-    ${media.tabletL`font-size: 16px;`};
+    ${media.tablet`font-size: 16px; text-align: left;`};
 
     &:first-child {
       margin-top: 0;
@@ -174,8 +178,9 @@ export const SectionWrapper = styled.section`
   margin-top: calc(182px - 80px);
   padding: 80px 56px 0;
   min-height: 620px;
+  text-align: center;
 
-  ${media.tablet`padding: 56px 0 0; margin-top: 24px; min-height: auto;`}
+  ${media.tablet`padding: 56px 0 0; margin-top: 24px; min-height: auto;`};
   ${media.tabletL`padding: 56px 32px 0`};
 
   ${pros =>
@@ -189,37 +194,33 @@ export const SectionWrapper = styled.section`
   }
 
   & > div {
-    ${maxWidth}
-    display: ${props => props.noGrid ? "block" : "flex" /* prettier-ignore */};
-    justify-content: ${
-      props => props.alignLeft ? "flex-end" : "flex-start" /* prettier-ignore */
-    };
-    ${media.tablet`flex-direction: column;`};
+    ${maxWidth};
+    display: flex;
+    flex-direction: column;
   }
 
-  .infoWrapper { 
+  .infoWrapper {
     padding: 0 24px;
-    ${media.tablet`text-align: left; padding: 0 40px;`}
-   }
+  }
+
+  &#currentLayerName ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 32px;
+    margin-top: 16px;
+    ${media.phone`display: block;`};
+  }
 `
 export const Info = styled.div`
-  max-width: 520px;
-  min-width: 410px;
-  flex: 0 0 auto;
-  ${media.tablet`
-    max-width: 100%;
-    min-width: auto;
-    padding: 0 24px;
+  display: flex;
+  flex-direction: column;
 
+  ${media.tablet`
+    padding: 0 24px;
   `};
 
   ${media.medium`
     padding: 0 24px;
-  `};
-
-  ${media.tabletL`
-    padding: 0;
-    max-width: 430px;
   `};
 `
 export const InfoRight = styled(Info)`
@@ -228,25 +229,29 @@ export const InfoRight = styled(Info)`
 
 export const Example = styled.div`
   position: relative;
-  margin: 0 24px;
-  flex: 1 0 auto;
-  ${media.tablet` margin: 24px 0 0; `};
+  margin: 16px 0 0;
 
   video {
-    position: absolute;
-    z-index: -1;
-    height: 620px;
-    ${media.tablet`position: relative; width: 100%; height: auto;`};
-  }
-
-  &.widthHeightVideo {
-    margin-top: -5%;
-  }
-
-  &.currentVideo {
-    margin-top: -3%;
+    width: 100%;
   }
 `
+
+export const ComboList = styled.div`
+  display: flex;
+  margin-top: 56px;
+  justify-content: center;
+  ${media.phone`flex-direction: column; margin-top: 32px;`};
+
+  & > div {
+    margin: 0 16px;
+    ${media.phone`margin: 0;`};
+  }
+
+  & > div:first-child {
+    ${media.phone`margin-bottom: 24px;`};
+  }
+`
+
 export const ExampleLeft = styled(Example)`
   video {
     right: 0;
@@ -258,17 +263,15 @@ export const CenterVideo = styled.div`
   height: 630px;
   overflow: hidden;
   position: relative;
-  margin: 32px auto 0;
+  margin: 16px auto 0;
 
   ${media.medium`
-    height: auto; margin-bottom: -4px; margin-top: 56px;
+    height: auto; margin-bottom: -4px;
   `};
   ${media.tablet`height: auto;`};
 
   video {
     width: 100%;
-
-    ${media.medium` position: static; `};
   }
 `
 
@@ -304,6 +307,8 @@ export const FooterCredits = styled.div`
   padding: 0 16px;
 
   ${media.medium`margin-top: 80px;`};
+
+  ${media.tablet`text-align: center;`};
 
   p {
     margin: 8px 0 0;
@@ -369,7 +374,9 @@ export const LinkButton = styled.a.attrs({
 `
 
 export const SecondaryWrapper = styled(SectionWrapper)`
-  margin-top: 0;
+  &&& {
+    margin-top: -4px;
+  }
   background: ${props => props.theme.secondaryColor};
   ${media.medium`display: none;`};
 `
@@ -409,6 +416,9 @@ export const ShortcutXDWrapper = styled.div`
 `
 
 export const ListWrapper = styled.div`
+  text-align: left;
+  align-self: ${props => props.alignSelf || "center"};
   margin-top: ${props => props.marginTop || 0};
   ${media.phone`margin-top: 32px;`};
+  ${media.tablet`text-align: center;`};
 `

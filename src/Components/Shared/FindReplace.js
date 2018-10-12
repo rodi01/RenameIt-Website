@@ -14,6 +14,7 @@ class FindReplace extends Component {
             <video
               type="video/mp4"
               src={this.props.videoUrl}
+              poster={this.props.poster}
               loop
               autoPlay
               playsInline

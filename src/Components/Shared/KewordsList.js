@@ -11,7 +11,11 @@ class KewordsList extends Component {
       </li>
     ))
     return (
-      <ListWrapper marginTop={this.props.marginTop}>
+      <ListWrapper
+        marginTop={this.props.marginTop}
+        alignSelf={this.props.alignSelf}
+        id={this.props.id}
+      >
         <H3>{this.props.title}</H3>
         <List>{rows}</List>
       </ListWrapper>

@@ -10,6 +10,11 @@ import FindReplace from "./Shared/FindReplace"
 import KeyboardShorcuts from "./Shared/KeyboardShorcuts"
 import Header from "./Header"
 import bg from "../images/xd_bg.png"
+import renamePoster from "../images/rename_sequence_cover.png"
+import storePoster from "../images/store_cover.png"
+import replacePoster from "../images/replace_cover.png"
+import widthPoster from "../images/width_cover.png"
+import currentPoster from "../images/current_cover.png"
 
 const theme = {
   bgColor: "#f9f3fd",
@@ -19,6 +24,10 @@ const theme = {
 }
 
 class XD extends Component {
+  videoUrl = filename => {
+    return `https://d1o11igmtwz5yg.cloudfront.net/images/renameIt/xd/${filename}`
+  }
+
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -28,13 +37,26 @@ class XD extends Component {
             bg={bg}
             description="Keep your Adobe XD CC files organized, batch rename layers and artboards."
           />
-          <RenameSequence videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Rename_Sequece.mp4" />
-          <CurrentLayerName videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Current.mp4" />
-          <WidthHeight videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Width.mp4" />
-          <FindReplace videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Replace.mp4" />
+          <RenameSequence
+            videoUrl={this.videoUrl("Rename_Sequece.mp4")}
+            poster={renamePoster}
+          />
+          <CurrentLayerName
+            videoUrl={this.videoUrl("Current.mp4")}
+            poster={currentPoster}
+          />
+          <WidthHeight
+            videoUrl={this.videoUrl("Width.mp4")}
+            poster={widthPoster}
+          />
+          <FindReplace
+            videoUrl={this.videoUrl("Replace.mp4")}
+            poster={replacePoster}
+          />
           <KeyboardShorcuts
             type="xd"
-            videoUrl="http://x.rodrigosoares.me.s3.amazonaws.com/images/renameIt/xd/Store.mp4"
+            videoUrl={this.videoUrl("Store.mp4")}
+            poster={storePoster}
           />
           <Footer type="xd" />
         </MainWrapper>

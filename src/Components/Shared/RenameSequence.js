@@ -1,5 +1,12 @@
 import React, { Component } from "react"
-import { SectionWrapper, Info, Example, P, H2 } from "./StyledComponents"
+import {
+  SectionWrapper,
+  Info,
+  Example,
+  P,
+  H2,
+  ComboList
+} from "./StyledComponents"
 import KeywordsList from "./KewordsList"
 
 class RenameSequence extends Component {
@@ -22,23 +29,25 @@ class RenameSequence extends Component {
               Sequentially rename layers in either ascending or descending
               order.
             </P>
-            <KeywordsList
-              title="Keywords"
-              keywords={keywords}
-              marginTop="56px"
-              keywordWidth="32px"
-            />
-            <KeywordsList
-              title="Pro Tip"
-              keywords={proTip}
-              marginTop="32px"
-              keywordWidth="32px"
-            />
+            <ComboList>
+              <KeywordsList
+                title="Keywords"
+                keywords={keywords}
+                keywordWidth="32px"
+              />
+              <KeywordsList
+                title="Pro Tip"
+                keywords={proTip}
+                keywordWidth="32px"
+                alignSelf="flex-start"
+              />
+            </ComboList>
           </Info>
           <Example>
             <video
               type="video/mp4"
               src={this.props.videoUrl}
+              poster={this.props.poster}
               loop
               autoPlay
               playsInline

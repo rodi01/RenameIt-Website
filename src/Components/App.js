@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom"
 import styled from "styled-components"
 import Sketch from "./Sketch"
 import XD from "./XD"
-import Soon from "./Soon"
 
 const Content = styled.div`
   overflow: hidden;
